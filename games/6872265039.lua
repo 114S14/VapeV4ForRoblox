@@ -1,9 +1,9 @@
 local run = function(func) func() end
 local cloneref = cloneref or function(obj) return obj end
 
-local playersService = cloneref(game:GetService('Players'))
-local replicatedStorage = cloneref(game:GetService('ReplicatedStorage'))
-local inputService = cloneref(game:GetService('UserInputService'))
+local playersService = cloneref(game:GetService('玩家'))
+local replicatedStorage = cloneref(game:GetService('复制储存'))
+local inputService = cloneref(game:GetService('用户输入服务'))
 
 local lplr = playersService.LocalPlayer
 local vape = shared.vape
@@ -44,10 +44,10 @@ run(function()
 		end
 	})
 
-	local kills = sessioninfo:AddItem('Kills')
-	local beds = sessioninfo:AddItem('Beds')
-	local wins = sessioninfo:AddItem('Wins')
-	local games = sessioninfo:AddItem('Games')
+	local kills = sessioninfo:AddItem('击杀')
+	local beds = sessioninfo:AddItem('床')
+	local wins = sessioninfo:AddItem('赢得')
+	local games = sessioninfo:AddItem('游戏')
 
 	vape:Clean(function()
 		table.clear(bedwars)
@@ -55,7 +55,7 @@ run(function()
 end)
 
 for _, v in vape.Modules do
-	if v.Category == 'Combat' or v.Category == 'Minigames' then
+	if v.Category == '战斗' or v.Category == '小游戏' then
 		vape:Remove(i)
 	end
 end
@@ -65,7 +65,7 @@ run(function()
 	local old
 	
 	Sprint = vape.Categories.Combat:CreateModule({
-		Name = 'Sprint',
+		Name = '冲刺',
 		Function = function(callback)
 			if callback then
 				if inputService.TouchEnabled then pcall(function() lplr.PlayerGui.MobileUI['2'].Visible = false end) end
@@ -83,7 +83,7 @@ run(function()
 				bedwars.SprintController:stopSprinting()
 			end
 		end,
-		Tooltip = 'Sets your sprinting to true.'
+		Tooltip = '让你的冲刺成为现实'
 	})
 end)
 	
@@ -91,7 +91,7 @@ run(function()
 	local AutoGamble
 	
 	AutoGamble = vape.Categories.Minigames:CreateModule({
-		Name = 'AutoGamble',
+		Name = '自动放方块',
 		Function = function(callback)
 			if callback then
 				AutoGamble:Clean(bedwars.Client:GetNamespace('RewardCrate'):Get('CrateOpened'):Connect(function(data)
@@ -120,7 +120,7 @@ run(function()
 				until not AutoGamble.Enabled
 			end
 		end,
-		Tooltip = 'Automatically opens lucky crates, piston inspired!'
+		Tooltip = '自动打开幸运箱，灵感来自活塞!'
 	})
 end)
 	
