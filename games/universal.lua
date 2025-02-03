@@ -14,7 +14,7 @@ end
 local function downloadFile(path, func)
 	if not isfile(path) then
 		local suc, res = pcall(function()
-			return game:HttpGet('https://raw.githubusercontent.com/7GrandDadPGN/VapeV4ForRoblox/'..readfile('newvape/profiles/commit.txt')..'/'..select(1, path:gsub('newvape/', '')), true)
+			return game:HttpGet('https://raw.githubusercontent.com/114S14/VapeV4ForRoblox/'..readfile('newvape/profiles/commit.txt')..'/'..select(1, path:gsub('newvape/', '')), true)
 		end)
 		if not suc or res == '404: Not Found' then
 			error(res)
@@ -428,7 +428,7 @@ run(function()
 			self.said[plr.Name] = true
 			notif('Vape', plr.Name..' is using vape!', 60)
 			self.customtags[plr.Name] = {{
-				text = 'VAPE USER',
+				text = 'VAPE USER┃114S14汉化',
 				color = Color3.new(1, 1, 0)
 			}}
 			local newent = entitylib.getEntity(plr)
@@ -662,11 +662,11 @@ run(function()
 						style = {},
 						screenSize = vape.gui.AbsoluteSize or Vector2.new(1920, 1080),
 						moderationDetails = {
-							punishmentTypeDescription = 'Delete',
+							punishmentTypeDescription = '删除',
 							beginDate = DateTime.fromUnixTimestampMillis(DateTime.now().UnixTimestampMillis - ((60 * math.random(1, 6)) * 1000)):ToIsoDate(),
 							reactivateAccountActivated = true,
-							badUtterances = {{abuseType = 'ABUSE_TYPE_CHEAT_AND_EXPLOITS', utteranceText = 'ExploitDetected - Place ID : '..game.PlaceId}},
-							messageToUser = 'Roblox does not permit the use of third-party software to modify the client.'
+							badUtterances = {{abuseType = 'ABUSE_TYPE_CHEAT_AND_EXPLOITS', utteranceText = '检测到漏洞利用 - 地点ID：'..game.PlaceId}},
+							messageToUser = 'Roblox不允许使用第三方软件来修改客户端:('
 						},
 						termsActivated = function() end,
 						communityGuidelinesActivated = function() end,
@@ -823,7 +823,7 @@ run(function()
 	end
 	
 	AimAssist = vape.Categories.Combat:CreateModule({
-		Name = 'AimAssist',
+		Name = '辅助瞄准',
 		Function = function(callback)
 			if CircleObject then
 				CircleObject.Visible = callback
@@ -878,15 +878,15 @@ run(function()
 				end
 			end
 		end,
-		Tooltip = 'Smoothly aims to closest valid target'
+		Tooltip = '就是平滑自瞄:)'
 	})
 	Targets = AimAssist:CreateTargets({Players = true})
 	Part = AimAssist:CreateDropdown({
-		Name = 'Part',
-		List = {'RootPart', 'Head'}
+		Name = '位置',
+		List = {'胸部', '头部'}
 	})
 	FOV = AimAssist:CreateSlider({
-		Name = 'FOV',
+		Name = '广角',
 		Min = 0,
 		Max = 1000,
 		Default = 100,
@@ -897,13 +897,13 @@ run(function()
 		end
 	})
 	Speed = AimAssist:CreateSlider({
-		Name = 'Speed',
+		Name = '速度',
 		Min = 0,
 		Max = 30,
 		Default = 15
 	})
 	AimAssist:CreateToggle({
-		Name = 'Range Circle',
+		Name = '圆的范围',
 		Function = function(callback)
 			if callback then
 				CircleObject = Drawing.new('Circle')
@@ -926,7 +926,7 @@ run(function()
 		end
 	})
 	CircleColor = AimAssist:CreateColorSlider({
-		Name = 'Circle Color', 
+		Name = '圆圈颜色', 
 		Function = function(hue, sat, val)
 			if CircleObject then
 				CircleObject.Color = Color3.fromHSV(hue, sat, val)
@@ -936,7 +936,7 @@ run(function()
 		Visible = false
 	})
 	CircleTransparency = AimAssist:CreateSlider({
-		Name = 'Transparency',
+		Name = '透明度',
 		Min = 0,
 		Max = 1,
 		Decimal = 10,
@@ -950,7 +950,7 @@ run(function()
 		Visible = false
 	})
 	CircleFilled = AimAssist:CreateToggle({
-		Name = 'Circle Filled', 
+		Name = '实心圆', 
 		Function = function(callback)
 			if CircleObject then
 				CircleObject.Filled = callback
@@ -960,7 +960,7 @@ run(function()
 		Visible = false
 	})
 	RightClick = AimAssist:CreateToggle({
-		Name = 'Require right click',
+		Name = '需要右侧点击',
 		Function = function()
 			if AimAssist.Enabled then 
 				AimAssist:Toggle()
@@ -976,7 +976,7 @@ run(function()
 	local CPS
 	
 	AutoClicker = vape.Categories.Combat:CreateModule({
-		Name = 'AutoClicker',
+		Name = '自动点击',
 		Function = function(callback)
 			if callback then
 				repeat
@@ -996,12 +996,12 @@ run(function()
 				until not AutoClicker.Enabled
 			end
 		end,
-		Tooltip = 'Automatically clicks for you'
+		Tooltip = '自动为你点击'
 	})
 	Mode = AutoClicker:CreateDropdown({
-		Name = 'Mode',
-		List = {'Tool', 'Click', 'RightClick'},
-		Tooltip = 'Tool - Automatically uses roblox tools (eg. swords)\nClick - Left click\nRightClick - Right click'
+		Name = '模式',
+		List = {'工具', '点击', '右击'},
+		Tooltip = '工具 - 自动使用Roblox中的工具 (就比如剑:])\n点击 - 鼠标右键点击\n右击 - 鼠标右键点击'
 	})
 	CPS = AutoClicker:CreateTwoSlider({
 		Name = 'CPS',
@@ -1023,7 +1023,7 @@ run(function()
 	local modified = {}
 	
 	Reach = vape.Categories.Combat:CreateModule({
-		Name = 'Reach',
+		Name = '范围',
 		Function = function(callback)
 			if callback then
 				repeat
@@ -1069,19 +1069,19 @@ run(function()
 				table.clear(modified)
 			end
 		end,
-		Tooltip = 'Extends tool attack reach'
+		Tooltip = '拓展工具攻击范围'
 	})
 	Targets = Reach:CreateTargets({Players = true})
 	Mode = Reach:CreateDropdown({
-		Name = 'Mode',
-		List = {'TouchInterest', 'Resize'},
+		Name = '模式',
+		List = {'触摸事件', '调整大小'},
 		Function = function(val)
-			Chance.Object.Visible = val == 'TouchInterest'
+			Chance.Object.Visible = val == '触摸事件'
 		end,
-		Tooltip = 'TouchInterest - Reports fake collision events to the server\nResize - Physically modifies the tools size'
+		Tooltip = '触摸事件 - 向服务器报告虚假碰撞事件\nResize - Physically modifies the tools size'
 	})
 	Value = Reach:CreateSlider({
-		Name = 'Range',
+		Name = '范围',
 		Min = 0,
 		Max = 2,
 		Decimal = 10,
@@ -1090,7 +1090,7 @@ run(function()
 		end
 	})
 	Chance = Reach:CreateSlider({
-		Name = 'Chance',
+		Name = '机会',
 		Min = 0,
 		Max = 100,
 		Default = 100,
@@ -1130,7 +1130,7 @@ run(function()
 
 	local function getTarget(origin, obj)
 		if rand.NextNumber(rand, 0, 100) > (AutoFire.Enabled and 100 or HitChance.Value) then return end
-		local targetPart = (rand.NextNumber(rand, 0, 100) < (AutoFire.Enabled and 100 or HeadshotChance.Value)) and 'Head' or 'RootPart'
+		local targetPart = (rand.NextNumber(rand, 0, 100) < (AutoFire.Enabled and 100 or HeadshotChance.Value)) and '头部' or '胸部'
 		local ent = entitylib['Entity'..Mode.Value]({
 			Range = Range.Value,
 			Wallcheck = Target.Walls.Enabled and (obj or true) or nil,
@@ -1198,13 +1198,13 @@ run(function()
 	Hooks.ViewportPointToRay = Hooks.ScreenPointToRay
 
 	SilentAim = vape.Categories.Combat:CreateModule({
-		Name = 'SilentAim',
+		Name = '静默瞄准',
 		Function = function(callback)
 			if CircleObject then
-				CircleObject.Visible = callback and Mode.Value == 'Mouse'
+				CircleObject.Visible = callback and Mode.Value == '鼠标'
 			end
 			if callback then
-				if Method.Value == 'Ray' then
+				if Method.Value == '射线' then
 					oldray = hookfunction(Ray.new, function(origin, direction)
 						if checkcaller() then
 							return oldray(origin, direction)
@@ -1212,7 +1212,7 @@ run(function()
 						local calling = getcallingscript()
 
 						if calling then
-							local list = #IgnoredScripts.ListEnabled > 0 and IgnoredScripts.ListEnabled or {'ControlScript', 'ControlModule'}
+							local list = #IgnoredScripts.ListEnabled > 0 and IgnoredScripts.ListEnabled or {'控制脚本', '控制模块'}
 							if table.find(list, tostring(calling)) then
 								return oldray(origin, direction)
 							end
@@ -1233,7 +1233,7 @@ run(function()
 
 						local calling = getcallingscript()
 						if calling then
-							local list = #IgnoredScripts.ListEnabled > 0 and IgnoredScripts.ListEnabled or {'ControlScript', 'ControlModule'}
+							local list = #IgnoredScripts.ListEnabled > 0 and IgnoredScripts.ListEnabled or {'控制脚本', '控制模块'}
 							if table.find(list, tostring(calling)) then
 								return oldnamecall(...)
 							end
@@ -1257,7 +1257,7 @@ run(function()
 						local ent = entitylib['Entity'..Mode.Value]({
 							Range = Range.Value,
 							Wallcheck = Target.Walls.Enabled or nil,
-							Part = 'Head',
+							Part = '头部',
 							Origin = (origin * fireoffset).Position,
 							Players = Target.Players.Enabled,
 							NPCs = Target.NPCs.Enabled
@@ -1297,33 +1297,33 @@ run(function()
 		ExtraText = function()
 			return Method.Value:gsub('FindPartOnRay', '')
 		end,
-		Tooltip = 'Silently adjusts your aim towards the enemy'
+		Tooltip = '静默调整你的瞄准方向朝向敌人'
 	})
 	Target = SilentAim:CreateTargets({Players = true})
 	Mode = SilentAim:CreateDropdown({
-		Name = 'Mode',
-		List = {'Mouse', 'Position'},
+		Name = '模式',
+		List = {'鼠标', '位置'},
 		Function = function(val)
 			if CircleObject then
-				CircleObject.Visible = SilentAim.Enabled and val == 'Mouse'
+				CircleObject.Visible = SilentAim.Enabled and val == '鼠标'
 			end
 		end,
-		Tooltip = 'Mouse - Checks for entities near the mouses position\nPosition - Checks for entities near the local character'
+		Tooltip = '鼠标 - 检测鼠标位置附近的实体\n位置 - 检测本地角色附近的实体'
 	})
 	Method = SilentAim:CreateDropdown({
-		Name = 'Method',
-		List = {'FindPartOnRay', 'FindPartOnRayWithIgnoreList', 'FindPartOnRayWithWhitelist', 'ScreenPointToRay', 'ViewportPointToRay', 'Raycast', 'Ray'},
+		Name = '方法',
+		List = {'射线查找部件', '射线查找部件（忽略列表）', '射线查找部件(白名单)', '屏幕点转换为射线', '视口点转换为射线', '射线投射', '射线'},
 		Function = function(val)
 			if SilentAim.Enabled then
 				SilentAim:Toggle()
 				SilentAim:Toggle()
 			end
-			MethodRay.Object.Visible = val == 'Raycast'
+			MethodRay.Object.Visible = val == '射线投射'
 		end,
-		Tooltip = 'FindPartOnRay* - Deprecated methods of raycasting used in old games\nRaycast - The modern raycast method\nPointToRay - Method to generate a ray from screen coords\nRay - Hooking Ray.new'
+		Tooltip = '射线查找部件* - 旧游戏中使用的已废弃的射线检测方法\n射线投射 - 现代射线投射方法\n点到射线 - 从屏幕坐标生成射线\n射线 - Hooking 新射线'
 	})
 	MethodRay = SilentAim:CreateDropdown({
-		Name = 'Raycast Type',
+		Name = '射线检测类型',
 		List = {'All', 'Exclude', 'Include'},
 		Darker = true,
 		Visible = false
@@ -5125,7 +5125,7 @@ run(function()
 	end
 	
 	Radar = vape:CreateOverlay({
-		Name = 'Radar',
+		Name = '定位',
 		Icon = getcustomasset('newvape/assets/new/radaricon.png'),
 		Size = UDim2.fromOffset(14, 14),
 		Position = UDim2.fromOffset(12, 13),
