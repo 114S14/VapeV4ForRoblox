@@ -6,6 +6,7 @@
   </picture>
 </p>
 <h2 align="center">
+  Sinicized by 114S14!
   A Roblox script built from the ground up for your precise needs!
   <br/>
   Rise up to the top while remaining completely untouchable.
@@ -20,7 +21,7 @@
 1. Download the specific scripting utility of your choice.
 2. Execute the provided loadstring below.
 ```luau
-loadstring(game:HttpGet("https://raw.githubusercontent.com/7GrandDadPGN/VapeV4ForRoblox/main/NewMainScript.lua", true))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/114S14/VapeV4ForRoblox/main/NewMainScript.lua"))()
 ```
 
 ## Possible Issues
