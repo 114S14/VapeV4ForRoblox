@@ -1,9 +1,9 @@
 local run = function(func) func() end
 local cloneref = cloneref or function(obj) return obj end
 
-local playersService = cloneref(game:GetService('玩家'))
-local replicatedStorage = cloneref(game:GetService('复制储存'))
-local inputService = cloneref(game:GetService('用户输入服务'))
+local playersService = cloneref(game:GetService('Players'))
+local replicatedStorage = cloneref(game:GetService('ReplicatedStorage'))
+local inputService = cloneref(game:GetService('UserInputService'))
 
 local lplr = playersService.LocalPlayer
 local vape = shared.vape
