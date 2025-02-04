@@ -20,7 +20,7 @@ local function downloadFile(path, func)
 			error(res)
 		end
 		if path:find('.lua') then
-			res = '--This watermark is used to delete the file if its cached, remove it to make the file persist after vape updates.\n'..res
+			res = '--如果文件被缓存，此水印用于删除文件；移除它可以使文件在Vape更新后仍然保留.\n'..res
 		end
 		writefile(path, res)
 	end
@@ -1575,7 +1575,7 @@ run(function()
 	local part
 	
 	AntiFall = vape.Categories.Blatant:CreateModule({
-		Name = 'AntiFall',
+		Name = '防跌落',
 		Function = function(callback)
 			if callback then
 				if Method.Value == 'Part' then 
@@ -1628,34 +1628,34 @@ run(function()
 				end
 			end
 		end,
-		Tooltip = 'Help\'s you with your Parkinson\'s\nPrevents you from falling into the void.'
+		Tooltip = '帮助\'s you with your Parkinson\'s\n防止你掉入虚空'
 	})
 	Method = AntiFall:CreateDropdown({
-		Name = 'Method',
-		List = {'Part', 'Classic'},
+		Name = '模式',
+		List = {'部分', '经典'},
 		Function = function(val)
 			if Mode.Object then 
-				Mode.Object.Visible = val == 'Part'
-				Material.Object.Visible = val == 'Part'
-				Color.Object.Visible = val == 'Part'
+				Mode.Object.Visible = val == '部分'
+				Material.Object.Visible = val == '部分'
+				Color.Object.Visible = val == '部分'
 			end
 			if AntiFall.Enabled then 
 				AntiFall:Toggle()
 				AntiFall:Toggle()
 			end
 		end,
-		Tooltip = 'Part - Moves a part under you that does various methods to stop you from falling\nClassic - Teleports you out of the void after reaching the part destroy plane'
+		Tooltip = '部分 - 在你脚下移动一个部件，通过多种方式防止你坠落\n经典 - 在达到部件销毁平面后将你传送出虚空\n推荐部分:)'
 	})
 	Mode = AntiFall:CreateDropdown({
-		Name = 'Move Mode',
-		List = {'Velocity', 'Collide'},
+		Name = '移动模式',
+		List = {'速度', '碰撞'},
 		Darker = true,
 		Function = function(val)
 			if part then
-				part.CanCollide = val == 'Collide'
+				part.CanCollide = val == '碰撞'
 			end
 		end,
-		Tooltip = 'Velocity - Launches you upward after touching\nCollide - Allows you to walk on the part'
+		Tooltip = '速度-触碰后会把你向上弹射出去\n碰撞 - 可以让你在上面行走'
 	})
 	local materials = {'ForceField'}
 	for _, v in Enum.Material:GetEnumItems() do
@@ -1664,7 +1664,7 @@ run(function()
 		end
 	end
 	Material = AntiFall:CreateDropdown({
-		Name = 'Material',
+		Name = '材料',
 		List = materials,
 		Darker = true,
 		Function = function(val)
@@ -1674,7 +1674,7 @@ run(function()
 		end
 	})
 	Color = AntiFall:CreateColorSlider({
-		Name = 'Color',
+		Name = '颜色',
 		DefaultOpacity = 0.5,
 		Darker = true,
 		Function = function(h, s, v, o)
@@ -1768,7 +1768,7 @@ run(function()
 	}
 
 	Fly = vape.Categories.Blatant:CreateModule({
-		Name = 'Fly',
+		Name = '飞',
 		Function = function(callback)
 			if Platform then
 				Platform.Parent = callback and gameCamera or nil
@@ -1834,10 +1834,10 @@ run(function()
 		ExtraText = function() 
 			return Mode.Value 
 		end,
-		Tooltip = 'Makes you go zoom.'
+		Tooltip = '让你加速飞行'
 	})
 	Mode = Fly:CreateDropdown({
-		Name = 'Speed Mode',
+		Name = '速度模式',
 		List = SpeedMethodList,
 		Function = function(val)
 			WallCheck.Object.Visible = FloatMode.Value == 'CFrame' or FloatMode.Value == 'TP' or val == 'CFrame' or val == 'TP'
@@ -1849,10 +1849,10 @@ run(function()
 				Fly:Toggle()
 			end
 		end,
-		Tooltip = 'Velocity - Uses smooth physics based movement\nCFrame - Directly adjusts the position of the root\nTP - Large teleports within intervals\nPulse - Controllable bursts of speed\nWalkSpeed - The classic mode of speed, usually detected on most games.'
+		Tooltip = '速度-通过物理原理实现平稳移动\nCFrame - 直接调整根部的位置\nTP - 在间隔内进行大范围传送\nPulse - 可控制的速度冲刺\nWalkSpeed - 经典加速模式，通常会在大多数游戏中被检测到'
 	})
 	FloatMode = Fly:CreateDropdown({
-		Name = 'Float Mode',
+		Name = '漂浮模式',
 		List = {'Velocity', 'CFrame', 'Bounce', 'Floor', 'Jump', 'TP'},
 		Function = function(val)
 			WallCheck.Object.Visible = Mode.Value == 'CFrame' or Mode.Value == 'TP' or val == 'CFrame' or val == 'TP'
@@ -2046,7 +2046,7 @@ run(function()
 	end
 	
 	HighJump = vape.Categories.Blatant:CreateModule({
-		Name = 'HighJump',
+		Name = '高跳',
 		Function = function(callback)
 			if callback then
 				if AutoDisable.Enabled then
@@ -2094,7 +2094,7 @@ run(function()
 	local modified = {}
 	
 	HitBoxes = vape.Categories.Blatant:CreateModule({
-		Name = 'HitBoxes',
+		Name = '命中框',
 		Function = function(callback)
 			if callback then
 				repeat
@@ -2237,7 +2237,7 @@ run(function()
 	end
 	
 	Invisible = vape.Categories.Blatant:CreateModule({
-		Name = 'Invisible',
+		Name = '隐身',
 		Function = function(callback)
 			if callback then
 				if not proper then
@@ -2327,7 +2327,7 @@ run(function()
 	end
 	
 	Killaura = vape.Categories.Blatant:CreateModule({
-		Name = 'Killaura',
+		Name = '杀戮光环',
 		Function = function(callback)
 			if callback then
 				repeat
@@ -2585,7 +2585,7 @@ run(function()
 	local AutoDisable
 	
 	LongJump = vape.Categories.Blatant:CreateModule({
-		Name = 'LongJump',
+		Name = '远跳',
 		Function = function(callback)
 			if callback then
 				local exempt = tick() + 0.1
@@ -2659,7 +2659,7 @@ run(function()
 	end
 	
 	MouseTP = vape.Categories.Blatant:CreateModule({
-		Name = 'MouseTP',
+		Name = '鼠标TP',
 		Function = function(callback)
 			if callback then
 				local position
@@ -2830,7 +2830,7 @@ run(function()
 	}
 	
 	Phase = vape.Categories.Blatant:CreateModule({
-		Name = 'Phase',
+		Name = '穿透',
 		Function = function(callback)
 			if callback then
 				Phase:Clean(runService.Stepped:Connect(function()
@@ -2859,7 +2859,7 @@ run(function()
 		Tooltip = 'Lets you Phase/Clip through walls. (Hold shift to use Phase over spider)'
 	})
 	Mode = Phase:CreateDropdown({
-		Name = 'Mode',
+		Name = '模式',
 		List = {'Part', 'Character', 'TP', 'FFlag'},
 		Function = function(val)
 			StudLimit.Object.Visible = val == 'TP'
@@ -2969,7 +2969,7 @@ run(function()
 			Tooltip = 'MoveDirection - Uses the games input vector for movement\nDirect - Directly calculate our own input vector'
 		}),
 		Value = Speed:CreateSlider({
-			Name = 'Speed',
+			Name = '速度',
 			Min = 1,
 			Max = 150,
 			Default = 50,
@@ -3064,7 +3064,7 @@ run(function()
 	local Active, Truss
 	
 	Spider = vape.Categories.Blatant:CreateModule({
-		Name = 'Spider',
+		Name = '自动',
 		Function = function(callback)
 			if callback then
 				if Truss then Truss.Parent = gameCamera end
@@ -3165,7 +3165,7 @@ run(function()
 	local AngularVelocity
 	
 	SpinBot = vape.Categories.Blatant:CreateModule({
-		Name = 'SpinBot',
+		Name = '旋转',
 		Function = function(callback)
 			if callback then
 				SpinBot:Clean(runService.PreSimulation:Connect(function()
@@ -3227,7 +3227,7 @@ run(function()
 	local lastpos = Region3.new(Vector3.zero, Vector3.zero)
 	
 	Swim = vape.Categories.Blatant:CreateModule({
-		Name = 'Swim',
+		Name = '游泳',
 		Function = function(callback)
 			if callback then
 				Swim:Clean(runService.PreSimulation:Connect(function(dt)
@@ -3268,7 +3268,7 @@ run(function()
 	local module, old
 	
 	TargetStrafe = vape.Categories.Blatant:CreateModule({
-		Name = 'TargetStrafe',
+		Name = '目标闪避',
 		Function = function(callback)
 			if callback then
 				if not module then
@@ -3474,7 +3474,7 @@ run(function()
 	end
 	
 	Arrows = vape.Categories.Render:CreateModule({
-		Name = 'Arrows',
+		Name = '箭头',
 		Function = function(callback)
 			if callback then
 				Arrows:Clean(entitylib.Events.EntityRemoved:Connect(Removed))
@@ -3615,7 +3615,7 @@ run(function()
 	end
 	
 	Chams = vape.Categories.Render:CreateModule({
-		Name = 'Chams',
+		Name = '定位',
 		Function = function(callback)
 			if callback then
 				Chams:Clean(entitylib.Events.EntityRemoved:Connect(Removed))
@@ -4308,7 +4308,7 @@ run(function()
 	local chair
 	
 	GamingChair = vape.Categories.Render:CreateModule({
-		Name = 'GamingChair',
+		Name = '游戏椅',
 		Function = function(callback)
 			if callback then
 				if vape.ThreadFix then
@@ -4521,7 +4521,7 @@ run(function()
 	local Health
 	
 	Health = vape.Categories.Render:CreateModule({
-		Name = 'Health',
+		Name = '血量',
 		Function = function(callback)
 			if callback then
 				local label = Instance.new('TextLabel')
@@ -4796,7 +4796,7 @@ run(function()
 	}
 	
 	NameTags = vape.Categories.Render:CreateModule({
-		Name = 'NameTags',
+		Name = '名字',
 		Function = function(callback)
 			if callback then
 				methodused = DrawingToggle.Enabled and 'Drawing' or 'Normal'
@@ -5000,7 +5000,7 @@ run(function()
 	end
 	
 	PlayerModel = vape.Categories.Render:CreateModule({
-		Name = 'PlayerModel',
+		Name = '玩家模型',
 		Function = function(callback)
 			if callback then 
 				if Local.Enabled then 
@@ -5279,7 +5279,7 @@ run(function()
 	end
 	
 	Search = vape.Categories.Render:CreateModule({
-		Name = 'Search',
+		Name = '搜索',
 		Function = function(callback)
 			if callback then
 				Search:Clean(workspace.DescendantAdded:Connect(Add))
@@ -5573,7 +5573,7 @@ run(function()
 	end
 	
 	Tracers = vape.Categories.Render:CreateModule({
-		Name = 'Tracers',
+		Name = '追踪器',
 		Function = function(callback)
 			if callback then
 				Tracers:Clean(entitylib.Events.EntityRemoved:Connect(Removed))
@@ -5701,7 +5701,7 @@ run(function()
 	WaypointFolder.Parent = vape.gui
 	
 	Waypoints = vape.Categories.Render:CreateModule({
-		Name = 'Waypoints',
+		Name = '路点',
 		Function = function(callback)
 			if callback then
 				for _, v in List.ListEnabled do
@@ -5879,7 +5879,7 @@ run(function()
 		end
 	})
 	Speed = AnimationPlayer:CreateSlider({
-		Name = 'Speed',
+		Name = '速度',
 		Function = function(val)
 			if anim then
 				anim:AdjustSpeed(val)
