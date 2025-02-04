@@ -44,10 +44,10 @@ run(function()
 		end
 	})
 
-	local kills = sessioninfo:AddItem('击杀')
-	local beds = sessioninfo:AddItem('床')
-	local wins = sessioninfo:AddItem('赢得')
-	local games = sessioninfo:AddItem('游戏')
+	local kills = sessioninfo:AddItem('Kills')
+	local beds = sessioninfo:AddItem('Beds')
+	local wins = sessioninfo:AddItem('Wins')
+	local games = sessioninfo:AddItem('Games')
 
 	vape:Clean(function()
 		table.clear(bedwars)
